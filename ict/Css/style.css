@@ -1,0 +1,166 @@
+/* UI */
+* {
+    background-color: #212121;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    background-color: #008489;
+    height: 75px;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.color-pickers {
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.color-pickers > label {
+    margin-right: 10px;
+}
+
+label[for="textColorPicker"] {
+    background-color: inherit;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    background-color: #008489;
+}
+
+.navbar ul li a {
+    background-color: #008489;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+    background-color: #00696e;
+}
+
+.navbar ul li a:active {
+    background-color: #004247;
+}
+
+.topbar>p {
+    background-color: #008489;
+    color: white;
+    font-size: 50px;
+    margin-left: 15px;
+    padding: 0;
+}
+/* UI */
+
+/* index */
+a{
+    text-decoration: none;
+}
+.welcometxt {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.box {
+    background-color: #008489;
+    color: white;
+    font-size: 24px;
+    padding: 20px;
+    margin: 50px;
+    text-align: center;
+    width: 300px;
+    height: 400px;
+    display: block;
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(25vh - 75px - 50px);
+}
+
+.suggestedbtn {
+    cursor: pointer;
+    background-color: #008489;
+    color: white;
+    font-size: 25px;
+    padding: 15px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.hoverbtn {
+    background-color: #008489;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    border: 0;
+    margin-left: 93%;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #008489;
+    padding: 10px;
+    z-index: 1;
+    border-radius: 5px;
+    margin-left: 75%;
+}
+
+.popup-btn {
+    display: block;
+    cursor: pointer;
+    background-color: #008489;
+    margin: 2px;
+    color: white;
+    font-size: 15px;
+    padding: 15px;
+    border: 0;
+}
+#receptenBtn:hover{
+font-size: 1.1vw;
+}
+#ingridientBtn:hover{
+font-size: 1.1vw; 
+}
+#voraadBtn:hover{
+font-size: 1.1vw;  
+}
+/* index */
+
+/* color pickers */
+
+input {
+    margin-right: 15px;
+}
+
+/* color pickers */
