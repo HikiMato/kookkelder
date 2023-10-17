@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //usertype add
 //usertype delete
 const deleteButton = document.getElementById('deleteButton');
-const usertypeIdToDelete = 1; // Replace with the actual usertype ID you want to delete
+const usertypeIdToDelete = 5; // Replace with the actual usertype ID you want to delete
 
 deleteButton.addEventListener('click', () => {
     fetch(`http://127.0.0.1:5000/usertype/${usertypeIdToDelete}`, {
@@ -78,3 +78,36 @@ deleteButton.addEventListener('click', () => {
     });
 });
 //usertype delete
+document.getElementById("editUserTypeForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const userTypeId = document.getElementById("userTypeId").value;
+    const userType = document.getElementById("userType").value;
+
+    // Send a PUT request to update the user type
+    fetch(`http://127.0.0.1:5000/usertype/${userTypeId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ type: userType }),
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            if (data.message === "User type updated successfully") {
+                // Update successful, you can show a success message or redirect to another page
+                console.log("User type updated successfully");
+            } else {
+                // Handle errors
+                console.error("Failed to update user type");
+            }
+        })
+        .catch((error) => {
+            console.error("An error occurred:", error);
+        });
+});
