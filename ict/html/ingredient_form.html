@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ingredient List</title>
+    <title>Ingredients</title>
 </head>
 <body>
-    <h1>Ingredient List</h1>
-    <ul id="ingredient-list"></ul>
+    <h1>Ingredients List</h1>
+    <ul id="ingredient-list">
+        <!-- Ingredients will be displayed here -->
+    </ul>
+    <h1>Create Ingredient</h1>
+    <form id="createIngredientForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="sort_ingredient_id">Sort Ingredient ID:</label>
+        <input type="number" id="sort_ingredient_id" name="sort_ingredient_id" required>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" step="0.01" required>
+        <label for="unit_id">Unit ID:</label>
+        <input type="number" id="unit_id" name="unit_id" required>
+        <label for="bb_date">BB Date:</label>
+        <input type="date" id="bb_date" name="bb_date" required>
+        <label for="last_restocked">Last Restocked:</label>
+        <input type="date" id="last_restocked" name="last_restocked" required>
+        <button type="submit">Create Ingredient</button>
+    </form>
+    <div id="message"></div>
+    <h1>Update Ingredient</h1>
+<form id="updateIngredientForm">
+    <label for="updateIngredientId">Ingredient ID:</label>
+    <input type="number" id="updateIngredientId" name="updateIngredientId" required>
+    <label for="updateName">Name:</label>
+    <input type="text" id="updateName" name="updateName">
+    <label for="updateSortIngredientId">Sort Ingredient ID:</label>
+    <input type="number" id="updateSortIngredientId" name="updateSortIngredientId">
+    <label for="updateDescription">Description:</label>
+    <input type="text" id="updateDescription" name="updateDescription">
+    <label for="updateAmount">Amount:</label>
+    <input type="number" id="updateAmount" name="updateAmount" step="0.01">
+    <label for="updateUnitId">Unit ID:</label>
+    <input type="number" id="updateUnitId" name="updateUnitId">
+    <label for="updateBbDate">BB Date:</label>
+    <input type="date" id="updateBbDate" name="updateBbDate">
+    <label for="updateLastRestocked">Last Restocked:</label>
+    <input type="date" id="updateLastRestocked" name="updateLastRestocked">
+    <button type="submit">Update Ingredient</button>
+</form>
     <script src="../Javascript/ingridi.js"></script>
 </body>
 </html>
