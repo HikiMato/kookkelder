@@ -12,15 +12,31 @@ function fetchIngredients() {
         ingredientList.innerHTML = ''; // Clear the existing list
         data.forEach((ingredient) => {
             const listItem = document.createElement('li');
-            listItem.innerHTML = `${ingredient.id}, <strong>${ingredient.name}</strong> - ${ingredient.description}, Amount: ${ingredient.amount}, BB Date: ${ingredient.bb_date}, Last Restocked: ${ingredient.last_restocked}`;
 
-            // Add a delete button for each ingredient
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.addEventListener('click', () => deleteIngredient(ingredient.id));
-            listItem.appendChild(deleteButton);
+            // Fetch unit name and sort ingredient name
+            fetch(`http://127.0.0.1:5000/unit/${ingredient.unit_id}`)
+                .then((response) => response.json())
+                .then((unitData) => {
+                    fetch(`http://127.0.0.1:5000/sort-ingredient/${ingredient.sort_ingredient_id}`)
+                        .then((response) => response.json())
+                        .then((sortIngredientData) => {
+                            listItem.innerHTML = `${ingredient.id}, <strong>${ingredient.name}</strong> - <strong>${ingredient.description}</strong>, Amount: <strong>${ingredient.amount}</strong>, BB Date: <strong>${ingredient.bb_date}</strong>, Last Restocked: <strong>${ingredient.last_restocked}</strong>, Unit: <strong>${unitData.name}</strong>, Sort : ${sortIngredientData.name}`;
 
-            ingredientList.appendChild(listItem);
+                            // Add a delete button for each ingredient
+                            const deleteButton = document.createElement('button');
+                            deleteButton.textContent = 'Delete';
+                            deleteButton.addEventListener('click', () => deleteIngredient(ingredient.id));
+                            listItem.appendChild(deleteButton);
+
+                            ingredientList.appendChild(listItem);
+                        })
+                        .catch((error) => {
+                            console.error('Error fetching sort ingredient:', error);
+                        });
+                })
+                .catch((error) => {
+                    console.error('Error fetching unit:', error);
+                });
         });
     })
     .catch((error) => {
@@ -29,6 +45,7 @@ function fetchIngredients() {
         message.textContent = 'An error occurred while fetching ingredients.';
     });
 }
+
 
 // Function to delete an ingredient by ID
 function deleteIngredient(ingredientId) {
