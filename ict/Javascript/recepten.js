@@ -13,7 +13,7 @@ function fetchRecipes() {
         data.forEach((recipe) => {
             const listItem = document.createElement('li');
 
-            listItem.innerHTML = `${recipe.id}, <strong>${recipe.name}</strong> - <strong>${recipe.description}</strong>, Preparation Time: <strong>${recipe.preparation_time}</strong> minutes, Cooking Time: <strong>${recipe.cooking_time}</strong> minutes`;
+            listItem.innerHTML = `<strong>id</strong>${recipe.id}, <strong>${recipe.name}</strong> - <strong>${recipe.description}</strong>, Preparation Time: <strong>${recipe.preparation_time}</strong> minutes, Cooking Time: <strong>${recipe.cooking_time}</strong> minutes`;
 
             // Add a delete button for each recipe
             const deleteButton = document.createElement('button');

@@ -20,7 +20,7 @@ function fetchIngredients() {
                     fetch(`http://127.0.0.1:5000/sort-ingredient/${ingredient.sort_ingredient_id}`)
                         .then((response) => response.json())
                         .then((sortIngredientData) => {
-                            listItem.innerHTML = `${ingredient.id}, <strong>${ingredient.name}</strong> - <strong>${ingredient.description}</strong>, Amount: <strong>${ingredient.amount}</strong>, BB Date: <strong>${ingredient.bb_date}</strong>, Last Restocked: <strong>${ingredient.last_restocked}</strong>, Unit: <strong>${unitData.name}</strong>, Sort : ${sortIngredientData.name}`;
+                            listItem.innerHTML = `<strong>id:</strong> ${ingredient.id}, <strong>${ingredient.name}</strong> - <strong>${ingredient.description}</strong>, Amount: <strong>${ingredient.amount}</strong>, BB Date: <strong>${ingredient.bb_date}</strong>, Last Restocked: <strong>${ingredient.last_restocked}</strong>, Unit: <strong>${unitData.name}</strong>, Sort : ${sortIngredientData.name}`;
 
                             // Add a delete button for each ingredient
                             const deleteButton = document.createElement('button');
