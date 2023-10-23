@@ -29,11 +29,11 @@
                 <form id="createRecipeForm">
                     <div class="form-group">
                         <label for="name" class="txtcolor">Name:</label>
-                        <input type="text" id="name" name="name" class="bgcolor txtcolor" required />
+                        <input type="text" id="name" name="name" class="bgcolor , txtcolor" required />
                     </div>
                     <div class="form-group">
                         <label for="description" class="txtcolor">Description:</label>
-                        <input type="text" id="description" name="description" class="bgcolor txtcolor" required />
+                        <input type="text" id="description" name="description" class="bgcolor , txtcolor" required />
                     </div>
                     <div class="form-group">
                         <label for="preparation_time" class="txtcolor">Preparation Time (minutes):</label>
@@ -44,7 +44,7 @@
                         <label for="cooking_time" class="txtcolor">Cooking Time (minutes):</label>
                         <input type="number" id="cooking_time" name="cooking_time" class="bgcolor txtcolor" required />
                     </div>
-                    <button type="submit" class="txtcolor bgcolor">Create Recipe</button>
+                    <button type="submit" class="txtcolor , bgcolor">Create Recipe</button>
                 </form>
                 <div id="message"></div>
             </div>
@@ -54,13 +54,12 @@
                 <h1 class="txtcolor">Update Recipe</h1>
                 <form id="updateRecipeForm">
                     <div class="form-group">
-                        <label for="updateRecipeId" class="txtcolor">Recipe ID:</label>
-                        <input type="number" id="updateRecipeId" name="updateRecipeId" class="bgcolor txtcolor"
-                            required />
+                        <label for="oldName" class="txtcolor">Old Name:</label>
+                        <input type="text" id="oldName" name="oldName" class="bgcolor txtcolor" required />
                     </div>
                     <div class="form-group">
-                        <label for="updateName" class="txtcolor">Name:</label>
-                        <input type="text" id="updateName" name="updateName" class="bgcolor txtcolor" />
+                        <label for="newName" class="txtcolor">New Name:</label>
+                        <input type="text" id="newName" name="newName" class="bgcolor txtcolor" />
                     </div>
                     <div class="form-group">
                         <label for="updateDescription" class="txtcolor">Description:</label>
@@ -75,13 +74,13 @@
                         <label for="updateCookingTime" class="txtcolor">Cooking Time (minutes):</label>
                         <input type="number" id="updateCookingTime" name="updateCookingTime" class="bgcolor txtcolor" />
                     </div>
-                    <button type="submit" class="txtcolor bgcolor">Update Recipe</button>
+                    <button type="submit" class="txtcolor , bgcolor">Update Recipe</button>
                 </form>
             </div>
         </div>
     </div>
     <script src="../Javascript/recepten.js"></script>
-    <script src="../Javascript/colorpicker.js"></script>
+    <script src="../Javascript/customizers.js"></script>
 </body>
 
 </html>

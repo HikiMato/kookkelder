@@ -13,7 +13,7 @@ function fetchRecipes() {
         data.forEach((recipe) => {
             const listItem = document.createElement('li');
 
-            listItem.innerHTML = `<strong>id</strong>${recipe.id}, <strong>${recipe.name}</strong> - <strong>${recipe.description}</strong>, Preparation Time: <strong>${recipe.preparation_time}</strong> minutes, Cooking Time: <strong>${recipe.cooking_time}</strong> minutes`;
+            listItem.innerHTML = `${recipe.id}, <strong>${recipe.name}</strong> - <strong>${recipe.description}</strong>, Preparation Time: <strong>${recipe.preparation_time}</strong> minutes, Cooking Time: <strong>${recipe.cooking_time}</strong> minutes`;
 
             // Add a delete button for each recipe
             const deleteButton = document.createElement('button');
@@ -94,44 +94,59 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     function updateRecipe() {
-        const updateRecipeId = document.getElementById('updateRecipeId').value;
+        const oldName = document.getElementById('oldName').value; // Get the old name
+        const newName = document.getElementById('newName').value; // Get the new name
     
-        const updateData = {
-            name: document.getElementById('updateName').value,
-            description: document.getElementById('updateDescription').value,
-            preparation_time: parseFloat(document.getElementById('updatePreparationTime').value),
-            cooking_time: parseFloat(document.getElementById('updateCookingTime').value),
-        };
-    
-        fetch(`http://127.0.0.1:5000/recipe/${updateRecipeId}`, {
-            method: 'PUT',
+        // Fetch all recipes
+        fetch('http://127.0.0.1:5000/recipe', {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updateData),
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                // Recipe updated successfully
-                document.getElementById('updateRecipeForm').reset(); // Clear the update form
-                fetchRecipes(); // Refresh the recipe list
-            } else if (response.status === 404) {
-                alert('Recipe not found.');
-            } else {
-                throw new Error('Failed to update recipe.');
             }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            const recipesToUpdate = data.filter(recipe => recipe.name === oldName);
+    
+            if (recipesToUpdate.length > 0) {
+                const updatePromises = recipesToUpdate.map((recipe) => {
+                    const updateData = {
+                        name: newName, // Use the new name
+                        description: recipe.description,
+                        preparation_time: recipe.preparation_time,
+                        cooking_time: recipe.cooking_time,
+                    };
+                    return fetch(`http://127.0.0.1:5000/recipe/${recipe.id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(updateData),
+                    });
+                });
+    
+                // Wait for all update requests to complete
+                return Promise.all(updatePromises);
+            } else {
+                throw new Error('Recipe not found.');
+            }
+        })
+        .then(() => {
+            // All recipes with the old name updated successfully
+            document.getElementById('updateRecipeForm').reset(); // Clear the update form
+            fetchRecipes(); // Refresh the recipe list
         })
         .catch((error) => {
             alert('Error: ' + error.message);
         });
     }
-    
+
     // Add event listener to the update form
     document.getElementById('updateRecipeForm').addEventListener('submit', function (event) {
         event.preventDefault();
         updateRecipe();
     });
-    
+
     // Fetch recipes on page load
     fetchRecipes();
 });
