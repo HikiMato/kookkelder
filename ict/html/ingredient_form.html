@@ -34,8 +34,12 @@
                     </div>
                     <div class="form-group">
                         <label for="sort_ingredient_id" class="txtcolor">Sort Ingredient ID:</label>
-                        <input type="number" id="sort_ingredient_id" name="sort_ingredient_id"
-                            class="bgcolor , txtcolor" required />
+                        <select type="number" id="sort_ingredient_id" name="sort_ingredient_id"
+                            class="bgcolor , txtcolor" required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="description" class="txtcolor">Description:</label>
@@ -48,7 +52,12 @@
                     </div>
                     <div class="form-group">
                         <label for="unit_id" class="txtcolor">Unit ID:</label>
-                        <input type="number" id="unit_id" name="unit_id" class="bgcolor , txtcolor" required />
+                        <select id="unit_id" name="unit_id" class="bgcolor , txtcolor" required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+
                     </div>
                     <div class="form-group">
                         <label for="bb_date" class="txtcolor">BB Date:</label>
@@ -69,13 +78,12 @@
                 <h1 class="txtcolor">Update Ingredient</h1>
                 <form id="updateIngredientForm">
                     <div class="form-group">
-                        <label for="updateIngredientId" class="txtcolor">Ingredient ID:</label>
-                        <input type="number" id="updateIngredientId" name="updateIngredientId"
-                            class="bgcolor , txtcolor" required />
+                        <label for="oldName" class="txtcolor">Old Name:</label>
+                        <input type="text" id="oldName" name="oldName" class="bgcolor txtcolor" required />
                     </div>
                     <div class="form-group">
-                        <label for="updateName" class="txtcolor">Name:</label>
-                        <input type="text" id="updateName" name="updateName" class="bgcolor , txtcolor" />
+                        <label for="newName" class="txtcolor">New Name:</label>
+                        <input type="text" id="newName" name="newName" class="bgcolor txtcolor" />
                     </div>
                     <div class="form-group">
                         <label for="updateSortIngredientId" class="txtcolor">Sort Ingredient ID:</label>

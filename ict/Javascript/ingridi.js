@@ -20,7 +20,7 @@ function fetchIngredients() {
                     fetch(`http://127.0.0.1:5000/sort-ingredient/${ingredient.sort_ingredient_id}`)
                         .then((response) => response.json())
                         .then((sortIngredientData) => {
-                            listItem.innerHTML = `<strong>id:</strong> ${ingredient.id}, <strong>${ingredient.name}</strong> - <strong>${ingredient.description}</strong>, Amount: <strong>${ingredient.amount}</strong>, BB Date: <strong>${ingredient.bb_date}</strong>, Last Restocked: <strong>${ingredient.last_restocked}</strong>, Unit: <strong>${unitData.name}</strong>, Sort : ${sortIngredientData.name}`;
+                            listItem.innerHTML = `<strong>${ingredient.name}</strong> - <strong>${ingredient.description}</strong>, Amount: <strong>${ingredient.amount}</strong>, BB Date: <strong>${ingredient.bb_date}</strong>, Last Restocked: <strong>${ingredient.last_restocked}</strong>, Unit: <strong>${unitData.name}</strong>, Sort : ${sortIngredientData.name}`;
 
                             // Add a delete button for each ingredient
                             const deleteButton = document.createElement('button');
@@ -113,35 +113,50 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     function updateIngredient() {
-        const updateIngredientId = document.getElementById('updateIngredientId').value;
+        const oldName = document.getElementById('oldName').value; // Get the old name
+        const newName = document.getElementById('newName').value; // Get the new name
     
-        const updateData = {
-            name: document.getElementById('updateName').value,
-            sort_ingredient_id: parseInt(document.getElementById('updateSortIngredientId').value),
-            description: document.getElementById('updateDescription').value,
-            amount: parseFloat(document.getElementById('updateAmount').value),
-            unit_id: parseInt(document.getElementById('updateUnitId').value),
-            bb_date: document.getElementById('updateBbDate').value,
-            last_restocked: document.getElementById('updateLastRestocked').value,
-        };
-    
-        fetch(`http://127.0.0.1:5000/ingredient/${updateIngredientId}`, {
-            method: 'PUT',
+        // Fetch all ingredients
+        fetch('http://127.0.0.1:5000/ingredient', {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updateData),
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                // Ingredient updated successfully
-                document.getElementById('updateIngredientForm').reset(); // Clear the update form
-                fetchIngredients(); // Refresh the ingredient list
-            } else if (response.status === 404) {
-                alert('Ingredient not found.');
-            } else {
-                throw new Error('Failed to update ingredient.');
             }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            const ingredientsToUpdate = data.filter(ingredient => ingredient.name === oldName);
+    
+            if (ingredientsToUpdate.length > 0) {
+                const updatePromises = ingredientsToUpdate.map((ingredient) => {
+                    const updateData = {
+                        name: newName, // Use the new name
+                        sort_ingredient_id: ingredient.sort_ingredient_id,
+                        description: ingredient.description,
+                        amount: ingredient.amount,
+                        unit_id: ingredient.unit_id,
+                        bb_date: ingredient.bb_date,
+                        last_restocked: ingredient.last_restocked,
+                    };
+                    return fetch(`http://127.0.0.1:5000/ingredient/${ingredient.id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(updateData),
+                    });
+                });
+    
+                // Wait for all update requests to complete
+                return Promise.all(updatePromises);
+            } else {
+                throw new Error('Ingredient not found.');
+            }
+        })
+        .then(() => {
+            // All ingredients with the old name updated successfully
+            document.getElementById('updateIngredientForm').reset(); // Clear the update form
+            fetchIngredients(); // Refresh the ingredient list
         })
         .catch((error) => {
             alert('Error: ' + error.message);
@@ -152,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('updateIngredientForm').addEventListener('submit', function (event) {
         event.preventDefault();
         updateIngredient();
-    });  
+    });
     // Fetch ingredients on page load
     fetchIngredients();
     
