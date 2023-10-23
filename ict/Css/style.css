@@ -11,58 +11,36 @@
     display: flex;
     align-items: center;
     background-color: #008489;
-    height: 75px;
-    justify-content: space-between;
-    padding: 0 15px;
+    height: 100px;
+    justify-content: flex-end;
+
 }
 
-.color-pickers {
-    display: flex;
-    align-items: center;
-    background-color: white;
+.colorpickBtn {
+    height: 30px; 
+    width: 30px;
+    border-style: none;
 }
+.file-upload-container {
+    position: relative;
+    display: inline-block;
+    max-width: 100px;
+    margin-right: 70%;
+  }
+  
+  .logouplader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
 
-.color-pickers > label {
-    margin-right: 10px;
-}
 
 label[for="textColorPicker"] {
     background-color: inherit;
 }
 
-.navbar ul {
-    list-style: none;
-    display: flex;
-}
-
-.navbar ul li {
-    background-color: #008489;
-}
-
-.navbar ul li a {
-    background-color: #008489;
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    padding: 15px 20px;
-    border-radius: 5px;
-}
-
-.navbar ul li a:hover {
-    background-color: #00696e;
-}
-
-.navbar ul li a:active {
-    background-color: #004247;
-}
-
-.topbar>p {
-    background-color: #008489;
-    color: white;
-    font-size: 50px;
-    margin-left: 15px;
-    padding: 0;
-}
 /* UI */
 
 /* index */
@@ -116,14 +94,15 @@ a{
 .hoverbtn {
     background-color: #008489;
     color: white;
-    font-size: 30px;
+    font-size: 100%;
     padding: 10px;
     border: 0;
-    margin-left: 93%;
     border-radius: 50%;
     height: 50px;
     width: 50px;
     cursor: pointer;
+    border: solid;
+    margin-right: 10px;
 }
 
 .popup {

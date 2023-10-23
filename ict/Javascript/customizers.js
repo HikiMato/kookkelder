@@ -40,3 +40,28 @@ document.addEventListener("DOMContentLoaded", function() {
     handleBackgroundColorChange({ target: { value: savedBackgroundColor } }); // Apply initial background color
     handleTextColorChange({ target: { value: savedTextColor } }); // Apply initial text color
 });
+
+window.onload = function() {
+    var savedLogo = localStorage.getItem('uploadedLogo');
+    if (savedLogo) {
+        document.getElementById('uploaded-logo').src = savedLogo;
+    }
+};
+
+function displayLogo() {
+    var logo = document.getElementById('uploaded-logo');
+    var input = document.getElementById('logo-upload');
+    var file = input.files[0];
+
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            // Set logo source to the data URL
+            logo.src = e.target.result;
+
+            // Save data URL to local storage
+            localStorage.setItem('uploadedLogo', e.target.result);
+        }
+        reader.readAsDataURL(file);
+    }
+}
