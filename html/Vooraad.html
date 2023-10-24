@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Types</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>User Types</h1>
+    <ul id="user-types-list">
+        <!-- User types will be displayed here -->
+    </ul>
+    <h1>Create User Type</h1>
+    <form id="createUserTypeForm">
+        <label for="type">User Type:</label>
+        <input type="text" id="type" name="type" required>
+        <button type="submit">Create User Type</button>
+    </form>
+    <div id="message"></div>
+    <button id="deleteButton">delete</button>
+    <h1>Update Usertype</h1>
+    <form id="editUserTypeForm">
+        <input type="number" id="userTypeId" name="userTypeId">
+        <label for="userType">User Type:</label>
+        <input type="text" id="userType" name="userType">
+        <button type="submit">Update User Type</button>
+    </form>    
+    <script src="../Javascript/voraad.js"></script>
+</body>
+</html>
