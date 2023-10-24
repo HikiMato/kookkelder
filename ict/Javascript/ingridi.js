@@ -6,6 +6,7 @@ function fetchIngredients() {
             'Content-Type': 'application/json',
         },
     })
+    
     .then((response) => response.json())
     .then((data) => {
         const ingredientList = document.getElementById('ingredient-list');
@@ -112,56 +113,66 @@ document.addEventListener('DOMContentLoaded', function () {
             message.textContent = 'Error: ' + error.message;
         });
     });
+
+
     function updateIngredient() {
-        const oldName = document.getElementById('oldName').value; // Get the old name
-        const newName = document.getElementById('newName').value; // Get the new name
+    const oldName = document.getElementById('oldName').value;
+    const newName = document.getElementById('newName').value;
+    const updateSortIngredientId = document.getElementById('updateSortIngredientId').value;
+    const updateDescription = document.getElementById('updateDescription').value;
+    const updateAmount = parseFloat(document.getElementById('updateAmount').value);
+    const updateUnitId = parseInt(document.getElementById('updateUnitId').value);
+    const updateBbDate = document.getElementById('updateBbDate').value;
+    const updateLastRestocked = document.getElementById('updateLastRestocked').value;
     
-        // Fetch all ingredients
-        fetch('http://127.0.0.1:5000/ingredient', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            const ingredientsToUpdate = data.filter(ingredient => ingredient.name === oldName);
-    
-            if (ingredientsToUpdate.length > 0) {
-                const updatePromises = ingredientsToUpdate.map((ingredient) => {
-                    const updateData = {
-                        name: newName, // Use the new name
-                        sort_ingredient_id: ingredient.sort_ingredient_id,
-                        description: ingredient.description,
-                        amount: ingredient.amount,
-                        unit_id: ingredient.unit_id,
-                        bb_date: ingredient.bb_date,
-                        last_restocked: ingredient.last_restocked,
-                    };
-                    return fetch(`http://127.0.0.1:5000/ingredient/${ingredient.id}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(updateData),
-                    });
+
+    fetch('http://127.0.0.1:5000/ingredient', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        const ingredientsToUpdate = data.filter(ingredient => ingredient.name === oldName);
+
+        if (ingredientsToUpdate.length > 0) {
+            const updatePromises = ingredientsToUpdate.map((ingredient) => {
+                const updateData = {
+                    name: newName,
+                    sort_ingredient_id: updateSortIngredientId, // Use the new Sort Ingredient ID
+                    description: updateDescription,
+                    amount: updateAmount,
+                    unit_id: updateUnitId,
+                    bb_date: updateBbDate,
+                    last_restocked: updateLastRestocked,
+                };
+
+                return fetch(`http://127.0.0.1:5000/ingredient/${ingredient.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updateData),
                 });
-    
-                // Wait for all update requests to complete
-                return Promise.all(updatePromises);
-            } else {
-                throw new Error('Ingredient not found.');
-            }
-        })
-        .then(() => {
-            // All ingredients with the old name updated successfully
-            document.getElementById('updateIngredientForm').reset(); // Clear the update form
-            fetchIngredients(); // Refresh the ingredient list
-        })
-        .catch((error) => {
-            alert('Error: ' + error.message);
-        });
-    }
+            });
+
+            // Wait for all update requests to complete
+            return Promise.all(updatePromises);
+        } else {
+            throw new Error('Ingredient not found.');
+        }
+    })
+    .then(() => {
+        // All ingredients with the old name updated successfully
+        document.getElementById('updateIngredientForm').reset();
+        fetchIngredients(); // Refresh the ingredient list
+    })
+    .catch((error) => {
+        alert('Error: ' + error.message);
+    });
+}
+
     
     // Add event listener to the update form
     document.getElementById('updateIngredientForm').addEventListener('submit', function (event) {

@@ -101,3 +101,14 @@ button[type="submit"]:hover,
 button[type="submit"]:focus {
     background-color: #00696e;
 }
+@media (min-width: 768px) {
+
+}
+@media (min-width: 1048px) {
+    .ingredient-forms {
+        display: flex;
+        flex-direction: column;
+        grid-row: auto; 
+        flex-wrap: wrap;
+    }
+}

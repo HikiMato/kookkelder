@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <title>Ingredients</title>
     <link rel="stylesheet" href="../Css/ingridient.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 </head>
 
 <body>
@@ -33,12 +35,9 @@
                         <input type="text" id="name" name="name" class="bgcolor , txtcolor" required />
                     </div>
                     <div class="form-group">
-                        <label for="sort_ingredient_id" class="txtcolor">Sort Ingredient ID:</label>
+                        <label for="sort_ingredient_id" class="txtcolor">Sort Ingredient:</label>
                         <select type="number" id="sort_ingredient_id" name="sort_ingredient_id"
                             class="bgcolor , txtcolor" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -52,10 +51,7 @@
                     </div>
                     <div class="form-group">
                         <label for="unit_id" class="txtcolor">Unit ID:</label>
-                        <select id="unit_id" name="unit_id" class="bgcolor , txtcolor" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                        <select type="number" id="unit_id" name="unit_id" class="bgcolor , txtcolor" required>
                         </select>
 
                     </div>
@@ -86,12 +82,9 @@
                         <input type="text" id="newName" name="newName" class="bgcolor txtcolor" />
                     </div>
                     <div class="form-group">
-                        <label for="updateSortIngredientId" class="txtcolor">Sort Ingredient ID:</label>
-                        <select type="number" id="updateSortIngredientId" name="updateSortIngredientId"
-                            class="bgcolor , txtcolor">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                        <label for="updateSortIngredientId" class="txtcolor">Sort Ingredient:</label>
+                        <select id="updateSortIngredientId" name="updateSortIngredientId" class="bgcolor , txtcolor">
+
                         </select>
                     </div>
                     <div class="form-group">
@@ -127,6 +120,7 @@
     </div>
     <script src="../Javascript/ingridi.js"></script>
     <script src="../Javascript/customizers.js"></script>
+    <script src="../Javascript/options.js"></script>
 </body>
 
 </html>
