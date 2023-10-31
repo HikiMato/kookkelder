@@ -51,24 +51,6 @@ window.onload = function () {
   }
 };
 
-function displayLogo() {
-  var logo = document.getElementById("uploaded-logo");
-  var input = document.getElementById("logo-upload");
-  var file = input.files[0];
-
-  if (file) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      // Set logo source to the data URL
-      logo.src = e.target.result;
-
-      // Save data URL to local storage
-      localStorage.setItem("uploadedLogo", e.target.result);
-    };
-    reader.readAsDataURL(file);
-  }
-}
-
 // Function to handle logo upload
 function handleLogoUpload() {
   const fileInput = document.getElementById('logo-upload');
