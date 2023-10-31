@@ -9,11 +9,11 @@
 
 <body>
     <div class="topbar , bgcolor" id="topbar" id="logo-container" style="text-align: center;">
-        <div class="file-upload-container , bgcolor">
-            <label for="logo-upload" class="file-upload-label , txtcolor , bgcolor">
+        <div class="file-upload-container, bgcolor">
+            <label for="logo-upload" class="file-upload-label, txtcolor, bgcolor">
                 <img id="uploaded-logo" src="#" alt="Uploaded Logo" style="max-width: 100%; max-height: 100%;">
             </label>
-            <input type="file" id="logo-upload" accept="image/*" onchange="displayLogo()" class="logouplader">
+            <input type="file" id="logo-upload" accept="image/*" onchange="handleLogoUpload()" class="logouplader">
         </div>
         <div class="bgcolor ">
             <button class="hoverbtn , bgcolor , txtcolor" id="popupBtn">+</button>

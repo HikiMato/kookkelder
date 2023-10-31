@@ -68,3 +68,41 @@ function displayLogo() {
     reader.readAsDataURL(file);
   }
 }
+
+// Function to handle logo upload
+function handleLogoUpload() {
+  const fileInput = document.getElementById('logo-upload');
+  const uploadedLogo = document.getElementById('uploaded-logo');
+
+  const file = fileInput.files[0];
+  if (!file) {
+    alert('Please select a file to upload.');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  fetch('http://127.0.0.1:5000/upload', {
+    method: 'POST',
+    body: formData,
+  })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return response.json().then(data => {
+            throw new Error(data.error);
+          });
+        }
+      })
+      .then(data => {
+        alert(`Picture uploaded successfully. Filename: ${data.filename}`);
+        // Display the uploaded image
+        uploadedLogo.src = URL.createObjectURL(file);
+      })
+      .catch(error => {
+        alert(`Error: ${error.message}`);
+        console.error('An error occurred:', error);
+      });
+}
