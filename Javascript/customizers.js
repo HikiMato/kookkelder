@@ -57,7 +57,7 @@ function handleLogoUpload() {
   const uploadedLogo = document.getElementById('uploaded-logo');
 
   const file = fileInput.files[0];
-  if (!file) {
+  if (!file)
     alert('Please select a file to upload.');
     return;
   }
