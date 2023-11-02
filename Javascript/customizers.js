@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const backgroundColorPickers = document.querySelectorAll('.bgcolor');
     const backgroundColorPicker = document.getElementById('backgroundColorPicker');
-    
+
     const textColorPickers = document.querySelectorAll('.txtcolor');
     const textColorPicker = document.getElementById('textColorPicker');
 
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
     handleTextColorChange({ target: { value: savedTextColor } }); // Apply initial text color
 });
 
-window.onload = function() {
+window.onload = function () {
     var savedLogo = localStorage.getItem('uploadedLogo');
     if (savedLogo) {
         document.getElementById('uploaded-logo').src = savedLogo;
@@ -64,4 +64,9 @@ function displayLogo() {
         }
         reader.readAsDataURL(file);
     }
+}
+
+function toggleNavbar() {
+    var popupBox = document.getElementById("popupBox");
+    popupBox.style.display = (popupBox.style.display === "block") ? "none" : "block";
 }
