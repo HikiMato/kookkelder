@@ -1,0 +1,91 @@
+/* Reset some default styles */
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Topbar styles */
+.topbar {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+.file-upload-container {
+    display: inline-block;
+}
+
+.file-upload-label {
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #3498db;
+    padding: 10px;
+    text-align: center;
+    z-index: 1;
+    right: 0; /* Align the right edge of the popup with the right edge of the button */
+    top: 40px; /* Adjust the top position as needed */
+}
+.popup-btn {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    color: #3498db;
+    border: none;
+    cursor: pointer;
+}
+
+.popup-btn:hover {
+    background-color: #eeeeee;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    margin: 5px;
+}
+
+/* Button container styles */
+.button-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.suggestedbtn {
+    padding: 10px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+.suggestedbtn:hover {
+    background-color: #2980b9;
+}
+
+/* Additional styles for color pickers */
+.color-pickers {
+    margin-top: 10px;
+}
+
+.colorpickBtn {
+    margin: 5px;
+    cursor: pointer;
+}
