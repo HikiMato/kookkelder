@@ -1,4 +1,7 @@
 /* Reset some default styles */
+html{
+    height: 100%;
+}
 body, h1, h2, p, button {
     margin: 0;
     padding: 0;
@@ -6,9 +9,10 @@ body, h1, h2, p, button {
 
 body {
     font-family: Arial, sans-serif;
+    background-color: #212121;
 }
 
-/* Navbar styles */
+/* navigation*/
 .navbar {
     background-color: #3498db;
     color: #ffffff;
@@ -78,39 +82,74 @@ body {
     margin: 5px;
     cursor: pointer;
 }
+/* navigation*/
 .container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4 , 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Two columns for forms */
+    grid-gap: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 40px auto;
+    padding: 20px;
+    align-items: center;
 
 }
-.welcome-text{
-    font-size: 40px;
-    grid-row: 1/28;
-    grid-column: 1/5;
-}
-.box {
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    line-height: 100px;
-    margin: 5px;
-}
+.box1 {
+grid-column: 1/2;
+padding: 15px;
 
-/* Button container styles */
-.button-container {
-    text-align: center;
-    margin: 20px;
 }
+.box2 {
+grid-column: 2/3;
+padding: 15px;
 
-.suggested-btn {
-    padding: 10px;
-    background-color: #3498db;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
 }
+.box3 {
+grid-column: 3/4;
+padding: 15px;
 
-.suggested-btn:hover {
-    background-color: #2980b9;
 }
+.recipe-item {
+    margin-bottom: 10px; 
+    list-style: none;
+    margin-left: -40px;
+  }
+  .ingredient-item {
+    margin-bottom: 10px; 
+    list-style: none;
+    margin-left: -40px;
+}
+@media only screen and (max-width: 700px) {
+    .box1 {
+        grid-column: 1/2;
+        padding: 15px;
+        
+        }
+        .box2 {
+        grid-column: 1/2;
+        padding: 15px;
+        
+        }
+        .box3 {
+        grid-column: 1/2;
+        padding: 15px;
+        
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr); /* Two columns for forms */
+            grid-gap: 20px;
+            max-width: 100%;
+            max-height: 100%;
+            margin: 40px auto;
+            padding: 20px;
+            align-items: center;
+        
+        }
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+  }
