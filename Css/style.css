@@ -89,11 +89,16 @@ body {
 
 /* Container styles */
 .container {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px;
-}
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4 , 1fr);
 
+}
+.welcome-text{
+    font-size: 40px;
+    grid-row: 1/28;
+    grid-column: 1/5;
+}
 .box {
     width: 100px;
     height: 100px;

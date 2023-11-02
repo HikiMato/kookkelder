@@ -64,3 +64,74 @@ function fetchRecipeAndIngredientData() {
 
 // Call the fetchRecipeAndIngredientData function when the page loads
 fetchRecipeAndIngredientData();
+
+
+    // Sample array of recipes
+    const recipes = [
+        { name: "Recipe 1", description: "This is the first recipe" },
+        { name: "Recipe 2", description: "This is the second recipe" },
+        { name: "Recipe 3", description: "This is the third recipe" }
+    ];
+
+    // Function to display recipes in the container
+    function displayRecipes() {
+        const recipeContainer = document.getElementById("recipeContainer");
+
+        // Clear existing content
+        recipeContainer.innerHTML = "";
+
+        // Loop through recipes and create HTML elements
+        recipes.forEach(recipe => {
+            const recipeDiv = document.createElement("div");
+            recipeDiv.className = "box bgcolor";
+            recipeDiv.innerHTML = `<h2>${recipe.name}</h2><p>${recipe.description}</p>`;
+            recipeContainer.appendChild(recipeDiv);
+        });
+    }
+
+    // Call the function to display recipes
+    displayRecipes();
+
+    
+    // Function to fetch recipes from the server
+    async function fetchRecipes() {
+        try {
+            const response = await fetch('your_api_endpoint'); // Replace 'your_api_endpoint' with your actual API endpoint
+            const data = await response.json();
+            return data.recipes; // Assuming the API response has a 'recipes' property
+        } catch (error) {
+            console.error('Error fetching recipes:', error);
+            return [];
+        }
+    }
+
+    // Sample array of available ingredients
+    const availableIngredients = ["ingredient1", "ingredient2"];
+
+    // Function to filter and display recommended recipes
+    async function displayRecommendedRecipes() {
+        const recipeContainer = document.getElementById("recipeContainer");
+
+        // Clear existing content
+        recipeContainer.innerHTML = "";
+
+        // Fetch recipes from the server
+        const recipes = await fetchRecipes();
+
+        // Filter recipes based on available ingredients
+        const recommendedRecipes = recipes.filter(recipe =>
+            recipe.ingredients.every(ingredient => availableIngredients.includes(ingredient))
+        );
+
+        // Display recommended recipes
+        recommendedRecipes.forEach(recipe => {
+            const recipeDiv = document.createElement("div");
+            recipeDiv.className = "box bgcolor";
+            recipeDiv.innerHTML = `<h2>${recipe.name}</h2><p>Ingredients: ${recipe.ingredients.join(", ")}</p>`;
+            recipeContainer.appendChild(recipeDiv);
+        });
+    }
+
+    // Call the function to display recommended recipes
+    displayRecommendedRecipes();
+

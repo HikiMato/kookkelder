@@ -5,20 +5,34 @@
     <meta charset="UTF-8" />
     <title>Ingredients</title>
     <link rel="stylesheet" href="../Css/ingridient.css" />
+    <link rel="stylesheet" href="../Css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 </head>
 
-<body>
-    <div class="topbar , bgcolor " id="topbar">
-        <p class="txtcolor">Kookkelder</p>
-        <div class="color-pickers">
-            <label for="backgroundColorPicker">Background Color:</label>
-            <input type="color" id="backgroundColorPicker" />
-            <label for="textColorPicker">Text Color:</label>
-            <input type="color" id="textColorPicker" />
+<div class="navbar bgcolor" id="navbar">
+    <div class="logo-container">
+        <label for="logo-upload" class="file-upload-label">
+            <img id="uploaded-logo" src="#" alt="Uploaded Logo">
+        </label>
+        <input type="file" id="logo-upload" accept="image/*" onchange="displayLogo()" class="logo-uploader">
+    </div>
+    <div class="menu-container">
+        <button class="nav-btn bgcolor" id="popupBtn" onclick="toggleNavbar()">+</button>
+        <div class="popup bgcolor" id="popupBox">
+            <a href="index.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Homepage</button></a>
+            <a href="ingredient_form.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Ingredienten toevoegen</button></a>
+            <a href="recep.html"><button class="popup-btn bgcolor" id="receptenBtn">+ Recepten toevoegen</button></a>
+            <a href="Vooraad.html"><button class="popup-btn bgcolor" id="voorraadBtn">+ Voorraad beheren</button></a>
         </div>
     </div>
+    <div class="color-pickers bgcolor">
+        <label for="backgroundColorPicker" class="bgcolor"></label>
+        <input type="color" id="backgroundColorPicker" class="color-picker bgcolor" />
+        <label for="textColorPicker" class="bgcolor"></label>
+        <input type="color" id="textColorPicker" class="color-picker bgcolor" />
+    </div>
+</div>
     <div class="grid-container">
         <div class="ingredient-list">
             <h1 class="txtcolor">Ingredients List</h1>
