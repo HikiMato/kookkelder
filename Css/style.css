@@ -26,6 +26,9 @@ body {
 .file-upload-label {
     cursor: pointer;
 }
+#logo-upload{
+    display: none;
+}
 
 .menu-container {
     display: flex;
@@ -38,6 +41,7 @@ body {
     color: #ffffff;
     border: none;
     cursor: pointer;
+    font-size: 40px;
 }
 
 .popup {
@@ -48,7 +52,7 @@ body {
     text-align: center;
     z-index: 1;
     right: 0;
-    top: 40px;
+    top: 11.5%;
 }
 
 .popup-btn {
@@ -73,12 +77,6 @@ body {
 .color-picker {
     margin: 5px;
     cursor: pointer;
-}
-
-
-.logo-container img {
-    max-width: 100px; 
-    max-height: 100px; 
 }
 .container {
     display: grid;

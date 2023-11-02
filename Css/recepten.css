@@ -9,7 +9,7 @@ body {
     background-color: #212121;
 }
 
-/* Navbar styles */
+/* navigation*/
 .navbar {
     background-color: #3498db;
     color: #ffffff;
@@ -79,7 +79,7 @@ body {
     margin: 5px;
     cursor: pointer;
 }
-
+/* navigation*/
 
 .logo-container img {
     max-width: 100px; 
