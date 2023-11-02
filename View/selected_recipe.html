@@ -29,6 +29,24 @@
         <script src="../Javascript/recipeingridient.js"></script>
         <script src="../Javascript/customizers.js"></script>
     </div>
+    <div class="add-recipe-ingredient">
+        <h2 class="txtcolor">Add New Recipe Ingredient</h2>
+        <form id="add-recipe-ingredient-form">
+            <label for="recipeId">Recipe ID:</label>
+            <input type="number" id="recipeId" required>
+
+            <label for="ingredientId">Ingredient ID:</label>
+            <input type="number" id="ingredientId" required>
+
+            <label for="unitId">Unit ID:</label>
+            <input type="number" id="unitId" required>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" step="0.01" required>
+
+            <button type="submit">Add Recipe Ingredient</button>
+        </form>
+    </div>
 </body>
 
 </html>
