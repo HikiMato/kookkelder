@@ -11,9 +11,10 @@
     <div class="navbar bgcolor" id="navbar">
         <div class="logo-container">
             <label for="logo-upload" class="file-upload-label">
-                <img id="uploaded-logo" src="#" alt="Uploaded Logo">
+                <img id="uploaded-logo" src="#" alt="Uploaded Logo" style="max-width: 100px;">
+                <input type="file" id="logo-upload" accept="image/*" onchange="handleLogoUpload()"
+                    class="logo-uploader">
             </label>
-            <input type="file" id="logo-upload" accept="image/*" onchange="displayLogo()" class="logo-uploader">
         </div>
         <div class="color-pickers bgcolor">
             <label for="backgroundColorPicker" class="bgcolor txtcolor"></label>

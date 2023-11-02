@@ -57,35 +57,30 @@ function handleLogoUpload() {
   const uploadedLogo = document.getElementById("uploaded-logo");
 
   const file = fileInput.files[0];
-  if (!file) alert("Please select a file to upload.");
-  return;
+  if (!file) {
+    alert("Please select a file to upload.");
+    return;
+  }
+
+  // Display the uploaded image
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    uploadedLogo.src = e.target.result;
+    // Save the selected image in local storage
+    localStorage.setItem("uploadedImage", e.target.result);
+  };
+
+  reader.readAsDataURL(file);
 }
 
-const formData = new FormData();
-formData.append("file", file);
-
-fetch("http://127.0.0.1:5000/upload", {
-  method: "POST",
-  body: formData,
-})
-  .then((response) => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      return response.json().then((data) => {
-        throw new Error(data.error);
-      });
-    }
-  })
-  .then((data) => {
-    alert(`Picture uploaded successfully. Filename: ${data.filename}`);
-    // Display the uploaded image
-    uploadedLogo.src = URL.createObjectURL(file);
-  })
-  .catch((error) => {
-    alert(`Error: ${error.message}`);
-    console.error("An error occurred:", error);
-  });
+// Check if there's a saved image in local storage and display it
+document.addEventListener("DOMContentLoaded", function () {
+  const savedImage = localStorage.getItem("uploadedImage");
+  const uploadedLogo = document.getElementById("uploaded-logo");
+  if (savedImage) {
+    uploadedLogo.src = savedImage;
+  }
+});
 
 function toggleNavbar() {
   var popupBox = document.getElementById("popupBox");
