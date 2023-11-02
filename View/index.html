@@ -16,9 +16,9 @@
             <input type="file" id="logo-upload" accept="image/*" onchange="displayLogo()" class="logo-uploader">
         </div>
         <div class="color-pickers bgcolor">
-            <label for="backgroundColorPicker" class="bgcolor txtcolor">bgcolor</label>
+            <label for="backgroundColorPicker" class="bgcolor txtcolor"></label>
             <input type="color" id="backgroundColorPicker" class="color-picker bgcolor" />
-            <label for="textColorPicker" class="txtcolor">Select Text Color: </label>
+            <label for="textColorPicker" class="txtcolor"> </label>
             <input type="color" id="textColorPicker" class="color-picker bgcolor " />
             <button class="nav-btn bgcolor txtcolor" id="popupBtn" onclick="toggleNavbar()">+</button>
             <div class="popup bgcolor" id="popupBox">
@@ -28,6 +28,8 @@
                         Ingredienten toevoegen</button></a>
                 <a href="recipe.html"><button class="popup-btn bgcolor txtcolor" id="receptenBtn">+ Recepten
                         toevoegen</button></a>
+                <a href="ingredient.html"><button class="popup-btn bgcolor" id="voorraadBtn">+ Voorraad
+                        beheren</button></a>
             </div>
         </div>
     </div>
