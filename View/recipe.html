@@ -4,7 +4,6 @@
 <head>
     <title>Recipes</title>
     <link rel="stylesheet" href="../Css/recepten.css" />
-    <link rel="stylesheet" href="../Css/style.css">
 </head>
 
 <body>
@@ -15,20 +14,21 @@
             </label>
             <input type="file" id="logo-upload" accept="image/*" onchange="displayLogo()" class="logo-uploader">
         </div>
-        <div class="menu-container">
-            <button class="nav-btn bgcolor" id="popupBtn" onclick="toggleNavbar()">+</button>
-            <div class="popup bgcolor" id="popupBox">
-                <a href="index.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Homepage</button></a>
-                <a href="ingredient_form.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Ingredienten toevoegen</button></a>
-                <a href="recep.html"><button class="popup-btn bgcolor" id="receptenBtn">+ Recepten toevoegen</button></a>
-                <a href="Vooraad.html"><button class="popup-btn bgcolor" id="voorraadBtn">+ Voorraad beheren</button></a>
-            </div>
-        </div>
         <div class="color-pickers bgcolor">
             <label for="backgroundColorPicker" class="bgcolor"></label>
             <input type="color" id="backgroundColorPicker" class="color-picker bgcolor" />
             <label for="textColorPicker" class="bgcolor"></label>
             <input type="color" id="textColorPicker" class="color-picker bgcolor" />
+            <button class="nav-btn bgcolor" id="popupBtn" onclick="toggleNavbar()">+</button>
+            <div class="popup bgcolor" id="popupBox">
+                <a href="index.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Homepage</button></a>
+                <a href="ingredient.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Ingredienten
+                        toevoegen</button></a>
+                <a href="recipe.html"><button class="popup-btn bgcolor" id="receptenBtn">+ Recepten
+                        toevoegen</button></a>
+                <a href="ingredient.html"><button class="popup-btn bgcolor" id="voorraadBtn">+ Voorraad
+                        beheren</button></a>
+            </div>
         </div>
     </div>
     <div class="grid-container">
@@ -59,7 +59,7 @@
                         <label for="cooking_time" class="txtcolor">Cooking Time (minutes):</label>
                         <input type="number" id="cooking_time" name="cooking_time" class="bgcolor txtcolor" required />
                     </div>
-                    <button type="submit" class="txtcolor , bgcolor">Create Recipe</button>
+                    <button type="submit" class="btnCtrl , txtcolor , bgcolor">Create Recipe</button>
                 </form>
                 <div id="message"></div>
             </div>
@@ -89,7 +89,7 @@
                         <label for="updateCookingTime" class="txtcolor">Cooking Time (minutes):</label>
                         <input type="number" id="updateCookingTime" name="updateCookingTime" class="bgcolor txtcolor" />
                     </div>
-                    <button type="submit" class="txtcolor , bgcolor">Update Recipe</button>
+                    <button type="submit" class="btnCtrl , txtcolor , bgcolor">Update Recipe</button>
                 </form>
             </div>
         </div>

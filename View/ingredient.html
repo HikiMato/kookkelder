@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <title>Ingredients</title>
     <link rel="stylesheet" href="../Css/ingridient.css" />
-    <link rel="stylesheet" href="../Css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 </head>
@@ -17,125 +16,121 @@
         </label>
         <input type="file" id="logo-upload" accept="image/*" onchange="displayLogo()" class="logo-uploader">
     </div>
-    <div class="menu-container">
-        <button class="nav-btn bgcolor" id="popupBtn" onclick="toggleNavbar()">+</button>
-        <div class="popup bgcolor" id="popupBox">
-            <a href="index.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Homepage</button></a>
-            <a href="ingredient_form.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Ingredienten toevoegen</button></a>
-            <a href="recep.html"><button class="popup-btn bgcolor" id="receptenBtn">+ Recepten toevoegen</button></a>
-            <a href="Vooraad.html"><button class="popup-btn bgcolor" id="voorraadBtn">+ Voorraad beheren</button></a>
-        </div>
-    </div>
+
     <div class="color-pickers bgcolor">
         <label for="backgroundColorPicker" class="bgcolor"></label>
         <input type="color" id="backgroundColorPicker" class="color-picker bgcolor" />
         <label for="textColorPicker" class="bgcolor"></label>
         <input type="color" id="textColorPicker" class="color-picker bgcolor" />
+        <button class="nav-btn bgcolor" id="popupBtn" onclick="toggleNavbar()">+</button>
+        <div class="popup bgcolor" id="popupBox">
+            <a href="index.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Homepage</button></a>
+            <a href="ingredient.html"><button class="popup-btn bgcolor" id="ingredientBtn">+ Ingredienten
+                    toevoegen</button></a>
+            <a href="recipe.html"><button class="popup-btn bgcolor" id="receptenBtn">+ Recepten toevoegen</button></a>
+            <a href="ingredient.html"><button class="popup-btn bgcolor" id="voorraadBtn">+ Voorraad beheren</button></a>
+        </div>
     </div>
 </div>
-    <div class="grid-container">
-        <div class="ingredient-list">
-            <h1 class="txtcolor">Ingredients List</h1>
-            <ul id="ingredient-list" class="txtcolor">
+<div class="grid-container">
+    <div class="ingredient-list">
+        <h1 class="txtcolor">Ingredients List</h1>
+        <ul id="ingredient-list" class="txtcolor">
 
-            </ul>
-        </div>
-        <div class="ingredient-forms">
-            <div class="ingri-create">
-                <h1 class="txtcolor">Create Ingredient</h1>
-                <form id="createIngredientForm">
-                    <div class="form-group">
-                        <label for="name" class="txtcolor">Name:</label>
-                        <input type="text" id="name" name="name" class="bgcolor , txtcolor" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="sort_ingredient_id" class="txtcolor">Sort Ingredient:</label>
-                        <select type="number" id="sort_ingredient_id" name="sort_ingredient_id"
-                            class="bgcolor , txtcolor" required>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="description" class="txtcolor">Description:</label>
-                        <input type="text" id="description" name="description" class="bgcolor , txtcolor" />
-                    </div>
-                    <div class="form-group">
-                        <label for="amount" class="txtcolor">Amount:</label>
-                        <input type="number" id="amount" name="amount" step="0.01" class="bgcolor , txtcolor"
-                            required />
-                    </div>
-                    <div class="form-group">
-                        <label for="unit_id" class="txtcolor">Unit ID:</label>
-                        <select type="number" id="unit_id" name="unit_id" class="bgcolor , txtcolor" required>
-                        </select>
+        </ul>
+    </div>
+    <div class="ingredient-forms">
+        <div class="ingri-create">
+            <h1 class="txtcolor">Create Ingredient</h1>
+            <form id="createIngredientForm">
+                <div class="form-group">
+                    <label for="name" class="txtcolor">Name:</label>
+                    <input type="text" id="name" name="name" class="bgcolor , txtcolor" required />
+                </div>
+                <div class="form-group">
+                    <label for="sort_ingredient_id" class="txtcolor">Sort Ingredient:</label>
+                    <select type="number" id="sort_ingredient_id" name="sort_ingredient_id" class="bgcolor , txtcolor"
+                        required>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="txtcolor">Description:</label>
+                    <input type="text" id="description" name="description" class="bgcolor , txtcolor" />
+                </div>
+                <div class="form-group">
+                    <label for="amount" class="txtcolor">Amount:</label>
+                    <input type="number" id="amount" name="amount" step="0.01" class="bgcolor , txtcolor" required />
+                </div>
+                <div class="form-group">
+                    <label for="unit_id" class="txtcolor">Unit ID:</label>
+                    <select type="number" id="unit_id" name="unit_id" class="bgcolor , txtcolor" required>
+                    </select>
 
-                    </div>
-                    <div class="form-group">
-                        <label for="bb_date" class="txtcolor">BB Date:</label>
-                        <input type="date" id="bb_date" name="bb_date" class="bgcolor , txtcolor" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="last_restocked" class="txtcolor">Last Restocked:</label>
-                        <input type="date" id="last_restocked" name="last_restocked" class="bgcolor , txtcolor"
-                            required />
-                    </div>
-                    <button type="submit" class="txtcolor , bgcolor">Create Ingredient</button>
-                </form>
-                <div id="message"></div>
-            </div>
-        </div>
-        <div class="ingredient-forms">
-            <div class="ingri-update">
-                <h1 class="txtcolor">Update Ingredient</h1>
-                <form id="updateIngredientForm">
-                    <div class="form-group">
-                        <label for="oldName" class="txtcolor">Old Name:</label>
-                        <input type="text" id="oldName" name="oldName" class="bgcolor txtcolor" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="newName" class="txtcolor">New Name:</label>
-                        <input type="text" id="newName" name="newName" class="bgcolor txtcolor" />
-                    </div>
-                    <div class="form-group">
-                        <label for="updateSortIngredientId" class="txtcolor">Sort Ingredient:</label>
-                        <select id="updateSortIngredientId" name="updateSortIngredientId" class="bgcolor , txtcolor">
-
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="updateDescription" class="txtcolor">Description:</label>
-                        <input type="text" id="updateDescription" name="updateDescription" class="bgcolor , txtcolor" />
-                    </div>
-                    <div class="form-group">
-                        <label for="updateAmount" class="txtcolor">Amount:</label>
-                        <input type="number" id="updateAmount" name="updateAmount" step="0.01"
-                            class="bgcolor , txtcolor" />
-                    </div>
-                    <div class="form-group">
-                        <label for="updateUnitId" class="txtcolor">Unit ID:</label>
-                        <select type="number" id="updateUnitId" name="updateUnitId" class="bgcolor , txtcolor">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="updateBbDate" class="txtcolor">BB Date:</label>
-                        <input type="date" id="updateBbDate" name="updateBbDate" class="bgcolor , txtcolor" />
-                    </div>
-                    <div class="form-group">
-                        <label for="updateLastRestocked" class="txtcolor">Last Restocked:</label>
-                        <input type="date" id="updateLastRestocked" name="updateLastRestocked"
-                            class="bgcolor , txtcolor" />
-                    </div>
-                    <button type="submit" class="txtcolor , bgcolor">Update Ingredient</button>
-                </form>
-            </div>
+                </div>
+                <div class="form-group">
+                    <label for="bb_date" class="txtcolor">BB Date:</label>
+                    <input type="date" id="bb_date" name="bb_date" class="bgcolor , txtcolor" required />
+                </div>
+                <div class="form-group">
+                    <label for="last_restocked" class="txtcolor">Last Restocked:</label>
+                    <input type="date" id="last_restocked" name="last_restocked" class="bgcolor , txtcolor" required />
+                </div>
+                <button type="submit" class="txtcolor , bgcolor">Create Ingredient</button>
+            </form>
+            <div id="message"></div>
         </div>
     </div>
-    <script src="../Javascript/ingridi.js"></script>
-    <script src="../Javascript/customizers.js"></script>
-    <script src="../Javascript/options.js"></script>
-    <script src="../Javascript/notification.js"></script>
+    <div class="ingredient-forms">
+        <div class="ingri-update">
+            <h1 class="txtcolor">Update Ingredient</h1>
+            <form id="updateIngredientForm">
+                <div class="form-group">
+                    <label for="oldName" class="txtcolor">Old Name:</label>
+                    <input type="text" id="oldName" name="oldName" class="bgcolor txtcolor" required />
+                </div>
+                <div class="form-group">
+                    <label for="newName" class="txtcolor">New Name:</label>
+                    <input type="text" id="newName" name="newName" class="bgcolor txtcolor" />
+                </div>
+                <div class="form-group">
+                    <label for="updateSortIngredientId" class="txtcolor">Sort Ingredient:</label>
+                    <select id="updateSortIngredientId" name="updateSortIngredientId" class="bgcolor , txtcolor">
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="updateDescription" class="txtcolor">Description:</label>
+                    <input type="text" id="updateDescription" name="updateDescription" class="bgcolor , txtcolor" />
+                </div>
+                <div class="form-group">
+                    <label for="updateAmount" class="txtcolor">Amount:</label>
+                    <input type="number" id="updateAmount" name="updateAmount" step="0.01" class="bgcolor , txtcolor" />
+                </div>
+                <div class="form-group">
+                    <label for="updateUnitId" class="txtcolor">Unit ID:</label>
+                    <select type="number" id="updateUnitId" name="updateUnitId" class="bgcolor , txtcolor">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="updateBbDate" class="txtcolor">BB Date:</label>
+                    <input type="date" id="updateBbDate" name="updateBbDate" class="bgcolor , txtcolor" />
+                </div>
+                <div class="form-group">
+                    <label for="updateLastRestocked" class="txtcolor">Last Restocked:</label>
+                    <input type="date" id="updateLastRestocked" name="updateLastRestocked" class="bgcolor , txtcolor" />
+                </div>
+                <button type="submit" class="txtcolor , bgcolor">Update Ingredient</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../Javascript/ingridi.js"></script>
+<script src="../Javascript/customizers.js"></script>
+<script src="../Javascript/options.js"></script>
+<script src="../Javascript/notification.js"></script>
 </body>
 
 </html>
